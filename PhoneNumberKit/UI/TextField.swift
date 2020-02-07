@@ -98,7 +98,7 @@ open class PhoneNumberTextField: UITextField, UITextFieldDelegate {
 
     @available(iOS 11.0, *)
     public var withDefaultPickerUI: Bool {
-        get { _withDefaultPickerUI }
+        get { return _withDefaultPickerUI }
         set { _withDefaultPickerUI = newValue }
     }
 

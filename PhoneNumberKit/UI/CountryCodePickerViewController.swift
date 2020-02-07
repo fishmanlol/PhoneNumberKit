@@ -118,15 +118,15 @@ public class CountryCodePickerViewController: UITableViewController {
     }
 
     func country(for indexPath: IndexPath) -> Country {
-        isFiltering ? filteredCountries[indexPath.row] : countries[indexPath.section][indexPath.row]
+        return isFiltering ? filteredCountries[indexPath.row] : countries[indexPath.section][indexPath.row]
     }
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
-        isFiltering ? 1 : countries.count
+        return isFiltering ? 1 : countries.count
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        isFiltering ? filteredCountries.count : countries[section].count
+        return isFiltering ? filteredCountries.count : countries[section].count
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -184,11 +184,11 @@ public class CountryCodePickerViewController: UITableViewController {
 extension CountryCodePickerViewController: UISearchResultsUpdating {
 
     var isFiltering: Bool {
-        searchController.isActive && !isSearchBarEmpty
+        return searchController.isActive && !isSearchBarEmpty
     }
 
     var isSearchBarEmpty: Bool {
-        searchController.searchBar.text?.isEmpty ?? true
+        return searchController.searchBar.text?.isEmpty ?? true
     }
 
     public func updateSearchResults(for searchController: UISearchController) {
@@ -243,7 +243,7 @@ internal extension CountryCodePickerViewController {
         static let reuseIdentifier = "Cell"
 
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: .value2, reuseIdentifier: Self.reuseIdentifier)
+            super.init(style: .value2, reuseIdentifier: Cell.reuseIdentifier)
         }
 
         required init?(coder: NSCoder) {
